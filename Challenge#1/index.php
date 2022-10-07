@@ -7,6 +7,7 @@
         "email VARCHAR(40) NOT NULL,".
         "gender CHAR(1) NOT NULL,".
         "PRIMARY KEY (user_id));";
+    $mysqli->query($sqlQuery);
     if ($mysqli->errno) {
         echo $mysqli->error;
     }
@@ -15,23 +16,35 @@
 <html>
 <head>
     <title>Challenge#1</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        <?php include "style.css" ?>
+    </style>
 </head>
 <body>
     <form action="create.php" method="POST">
-        Name: <input type="text" name="name"><br>
-        E-mail: <input type="text" name="email"><br>
-        <div class="radio-wrapper">
-            Male
-            <input type="radio" id="m" name="gender" value="M">
-            Female
-            <input type="radio" id="f" name="gender" value="F">
+        <div class="title">Add New User</div>
+        <div class="input-field">
+            <p>Name</p>
+            <input type="text" name="name">
+        </div>
+        <div class="input-field">
+            <p>Email</p>
+            <input type="text" name="email">
+        </div>
+        <div class="input-field">
+            <p>Gender</p>
+            <div class="radio-wrapper">
+                <label for="m">Male</label>
+                <input type="radio" id="m" name="gender" value="M">
+                <label for="f">Female</label>
+                <input type="radio" id="f" name="gender" value="F">
+            </div>
         </div>
         <input type="submit" value="Create">
     </form>
     <table>
         <tr>
-            <th>ID</th>
+            <th>User ID</th>
             <th>Name</th>
             <th>Email</th>
             <th>Gender</th>
@@ -47,8 +60,8 @@
                     <td>{$row['name']}</td>
                     <td>{$row['email']}</td>
                     <td>{$row['gender']}</td>
-                    <td><a href='edit.php?id={$row['user_id']}'>Edit</a></td>
-                    <td><a href='delete.php?id={$row['user_id']}'>Delete</a></td>
+                    <td><a href='edit.php?id={$row['user_id']}' class='edit-btn'>Edit</a></td>
+                    <td><a href='delete.php?id={$row['user_id']}' class='delete-btn'>Delete</a></td>
                 </tr>";
             }
         ?>

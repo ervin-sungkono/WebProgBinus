@@ -18,25 +18,35 @@
         }if($mysqli->errno){
             throw new Exception($mysqli->error);
         }
-    }else{
-        echo('Please fill in all the fields');
     }
 ?>
 
 <html>
 <head>
     <title>Update</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        <?php include "style.css" ?>
+    </style>
 </head>
 <body>
     <form action="edit.php?id=<?php echo $id ?>" method="POST">
-        Name: <input type='text' name='name' value="<?php echo $row['name'] ?>"><br>
-        E-mail: <input type='text' name='email' value="<?php echo $row['email'] ?>"><br>
-        <div class='radio-wrapper'>
-            Male
-            <input type='radio' id='m' name='gender' value='M' <?php echo ($row['gender'] === 'M') ? "checked" : "" ?>>
-            Female
-            <input type='radio' id='f' name='gender' value='F' <?php echo ($row['gender'] === 'F') ? "checked" : "" ?>>
+        <div class="title">Update User</div>
+        <div class="input-field">
+            <p>Name</p>
+            <input type='text' name='name' value="<?php echo $row['name'] ?>">
+        </div>
+        <div class="input-field">
+            <p>Email</p>
+            <input type='text' name='email' value="<?php echo $row['email'] ?>">
+        </div>
+        <div class="input-field">
+            <p>Gender</p>
+            <div class='radio-wrapper'>
+                <label for="m">Male</label>
+                <input type='radio' id='m' name='gender' value='M' <?php echo ($row['gender'] === 'M') ? "checked" : "" ?>>
+                <label for="f">Female</label>
+                <input type='radio' id='f' name='gender' value='F' <?php echo ($row['gender'] === 'F') ? "checked" : "" ?>>
+            </div>
         </div>
         <input type='submit' value="Update">
     </form>
