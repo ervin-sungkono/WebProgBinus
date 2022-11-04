@@ -6,11 +6,11 @@
 
 @section('content')
     @if ($a > $b)
-        <?php $message = 'a is more than b' ?>
+        <?php $message = 'is more than'?>
     @elseif ($a < $b)
-        <?php $message = 'a is less than b' ?>
+        <?php $message = 'is less than' ?>
     @else
-        <?php $message = 'a is equal to b'?>
+        <?php $message = 'is equal to'?>
     @endif
-    @include('components.alert', array('message'=>$message))
+    @include('components.alert', array('message'=>"$a $message $b"))
 @endsection

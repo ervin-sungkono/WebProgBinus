@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 <body>
-    <h1>THIS IS A HEADING</h1>
+    <h1 class="fixed-heading">THIS IS A HEADING</h1>
     <div class="main-section">
         <h2>@yield('heading')</h2>
         @yield('content')

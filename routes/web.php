@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,12 +16,5 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
-Route::post('/test', function(Request $request){
-    $a = $request->a;
-    $b = $request->b;
-    return view('result', compact(['a','b']));
-});
+Route::get('/', [HomeController::class, 'index']);
+Route::post('/test', [HomeController::class, 'result']);
